@@ -19,7 +19,8 @@ namespace Svg
         public static Func<string, FontFamily> FontLoaderCallback;
         static SvgFontManager()
         {
-            SystemFonts = FontFamily.Families.ToDictionary(ff => ff.Name.ToLower());
+            SystemFonts = new Dictionary<string, FontFamily>();
+            Array.ForEach(FontFamily.Families, ff => SystemFonts[ff.Name.ToLower()] = ff);
         }
 
         /// <summary>
