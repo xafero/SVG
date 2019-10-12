@@ -256,6 +256,8 @@ namespace Svg.FilterEffects
         public override void Process(ImageBuffer buffer)
         {
             var inputImage = buffer[this.Input];
+            if (inputImage == null)
+                return;
             var result = Apply(inputImage);
             buffer[this.Result] = result;
         }

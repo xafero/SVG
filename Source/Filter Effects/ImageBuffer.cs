@@ -22,7 +22,7 @@ namespace Svg.FilterEffects
 
         public Bitmap Buffer
         {
-            get { return _images[BufferKey]; }
+            get { return _images.TryGetValue(BufferKey, out var img) ? img : null; }
         }
         public int Count
         {

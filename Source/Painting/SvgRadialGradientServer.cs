@@ -155,7 +155,14 @@ namespace Svg
                         using (var solidBrush = new SolidBrush(renderColor))
                         {
                             var newClip = origClip.Clone();
-                            newClip.Exclude(path);
+                            try
+                            {
+                                newClip.Exclude(path);
+                            }
+                            catch (Exception)
+                            {
+                                // TODO: Just ignore me, please! (GDI+ error)
+                            }
                             renderer.SetClip(newClip);
 
                             var renderPath = (GraphicsPath)renderingElement.Path(renderer);

@@ -45,6 +45,8 @@ namespace Svg
 
         public void DrawImage(Image image, RectangleF destRect, RectangleF srcRect, GraphicsUnit graphicsUnit)
         {
+            if (image == null)
+                return;
             _innerGraphics.DrawImage(image, destRect, srcRect, graphicsUnit);
         }
 
